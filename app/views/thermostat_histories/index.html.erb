@@ -1,0 +1,29 @@
+<h1>Listando lecturas de termsotatos</h1>
+
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Thermostato</th>
+      <th>Temperatura</th>
+      <th>Humedad</th>
+      <th>Consumo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @thermostat_histories.each do |thermostat_history| %>
+      <tr>
+        <td><%= thermostat_history.thermostat.serial_number %></td>
+        <td><%= thermostat_history.temperature %>&deg;C</td>
+        <td><%= thermostat_history.humidity %>%</td>
+        <td><%= thermostat_history.consumption %> kW</td>       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

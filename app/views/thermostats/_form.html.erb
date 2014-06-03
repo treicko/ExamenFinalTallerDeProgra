@@ -1,0 +1,41 @@
+<%= form_for([@location, @thermostat]) do |f| %>
+  
+  <% if @thermostat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thermostat.errors.count, "error") %> prohibieron que este termostato se guarde:</h2>
+
+      <ul>
+      <% @thermostat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label "Numero de serie" %><br>
+    <%= f.number_field :serial_number %>
+  </div>
+    <div class="field">
+    <%= f.label :Lugar %><br>
+    <%= f.text_field :place %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Temperatura Basica" %><br>
+    <%= f.number_field :temperature %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Configuracion Basica" %><br> 
+    <%= f.radio_button(:configuration, true) %>
+    <%= f.label :configuration, "Si" %>
+    <%= f.radio_button(:configuration, false) %>
+    <%= f.label :configuration, "No" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Aceptar" %>
+  </div>
+<% end %>

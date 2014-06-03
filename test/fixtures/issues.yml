@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  state: MyString
+  resolution: MyString
+  thermostat_id: 1
+
+two:
+  title: MyString
+  description: MyString
+  state: MyString
+  resolution: MyString
+  thermostat_id: 1

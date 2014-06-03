@@ -1,0 +1,86 @@
+<h1>Listando locaciones</h1>
+ <table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Mis locaciones</th>
+      <th></th>
+      <th>Mis lugares</th>
+      <!--<th>User</th>-->
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+
+    </tr>
+  </thead>
+
+  <tbody >
+    <% @locations.each do |location| %>
+      <% @thermostats = Thermostat.where(:location_id => location.id) %>
+      <tr>
+        <td>
+          <a href="/local_weather/<%=location.id%>"> <%= image_tag "casa.png", size: "102x86" %><center><%= location.address %><center></a>
+        </td>
+        <td></td>
+        
+          <% @thermostats.each do |t| %>
+          <td>
+          <a href="/locations/<%=location.id%>/thermostats/<%=t.id%>">
+              <%= image_tag "thermostat.png", size: "120x90" %>
+
+          </a>
+              <td>
+              <table>
+                <tbody>
+                  <tr><td><%= link_to t.place, controller: 'schedules', action: 'edit', id: t.id %></td><!--Mandando el id del termostato-->
+                  </tr>
+                  
+                  
+                  
+                  <tr>
+                    <td><a href="/locations/<%=location.id%>/thermostats/config_temp/<%=t.id%>">Temperatura Basica</a></td>  
+                  </tr>
+                  <tr>
+                    <td><a href="/alerts/setting_alert/<%= t.id%>"> Configurar Alerta</a></td>  
+                  </tr>
+                  <tr>
+                    <td><a href="/alerts/alert_list/<%= t.id%>"> Ver Alertas</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="/alerts/send_temperture/<%= t.id%>"> Enviar Temperatura </a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="/issues/new/<%= t.id%>" class="btn btn-info"> Reportar Problema </a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="/issues" class="btn btn-danger" > Ver Lista de Problemas </a></td>
+                  </tr>
+                </tbody>
+              </table>
+              </td>
+          <% end %>
+
+             
+
+          </td>
+          
+       
+        <td>
+          <%= image_tag "green_leaf.png", size: "60x45" %>
+        </td>
+        <td>
+          <%= link_to 'Add Thermostat', location %> |
+
+          <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location', new_location_path %>
