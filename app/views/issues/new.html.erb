@@ -12,7 +12,6 @@
 	<%= form_tag("/issues/create_issue", method: "post") do %>
 	  <fieldset>
 	    <input type="HIDDEN" name="thermostat_id" value="<%= @thermostat_id %>">
-	    id_termstato: <%= @thermostat_id %>
 		<div class="form-group">
 		  <label class="control-label">Titulo: </label>
 		  <input type="text" class="form-control" name="title">

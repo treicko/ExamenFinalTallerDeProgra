@@ -44,7 +44,7 @@ class IssuesController < ApplicationController
     @issue.thermostat_id = params[:thermostat_id]
     @issue.description = params[:description]
     @issue.save
-    redirect_to '/issues'
+    redirect_to '/locations'
 
   end
 
@@ -73,7 +73,14 @@ class IssuesController < ApplicationController
   end
 
   def issues_thermostat_list
-    
+    @issues = Issue.where(:thermostat_id => params[:id])
+  end
+
+  def cancel_issues_thermostat
+    @my_issue = Issue.find(params[:id])
+    @my_issue.state = "CANCELADO"
+    @my_issue.save
+    redirect_to '/locations'
   end
 
   private

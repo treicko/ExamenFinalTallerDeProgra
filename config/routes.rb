@@ -2,6 +2,8 @@ DomoticaProyect::Application.routes.draw do
 
   post '/issues/create_issue' => 'issues#create_issue'
   get '/issues/new/:id' =>  'issues#new'
+  get '/issues/issues_thermostat_list/:id' => 'issues#issues_thermostat_list'
+  get '/issues/cancel_issues_thermostat/:id' => 'issues#cancel_issues_thermostat'
 
   resources :issues
 
